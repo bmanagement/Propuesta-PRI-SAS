@@ -1,0 +1,3932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta · B Management — Junio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1F1F3E;
+  --navy-deep: #0F0F24;
+  --navy-mid: #2A2A55;
+  --blue: #0025DB;
+  --blue-bright: #3D5BE8;
+  --blue-glow: #6680FF;
+  --silver-blue: #8890B5;
+  --silver-light: #C5CADF;
+  --silver-soft: #E6E8F0;
+  --green: #00CC66;
+  --green-glow: #4DFF99;
+  --paper: #F7F7FA;
+  --paper-warm: #FAFAF7;
+  --ink: #0F0F1F;
+  --line: #E6E8F0;
+  --line-dark: rgba(255,255,255,0.08);
+  --white: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: "ss01", "ss02"; }
+h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; color: var(--navy); letter-spacing: -0.02em; }
+
+/* === NAV === */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(15,15,36,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  display: flex; align-items: center; gap: 14px;
+}
+.nav-logo-svg {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+.nav-logo-svg .logo-light { fill: var(--white); }
+.nav-logo-svg .logo-dark { fill: var(--white); }
+.nav-logo-svg .logo-blue { fill: var(--white); }
+.nav-logo .dot {
+  width: 8px; height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--green-glow);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+.nav-logo span { color: var(--silver-blue); font-weight: 300; }
+.nav-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* === HERO === */
+.hero {
+  background: var(--navy-deep);
+  color: var(--white);
+  padding: 140px 40px 96px;
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex; align-items: center;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(0,37,219,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(0,204,102,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(136,144,181,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.hero-inner {
+  max-width: 1280px; margin: 0 auto;
+  position: relative; z-index: 2;
+  width: 100%;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--silver-light);
+  letter-spacing: 0.15em;
+  margin-bottom: 48px;
+  padding: 10px 18px;
+  background: rgba(0,204,102,0.08);
+  border: 1px solid rgba(0,204,102,0.3);
+  border-radius: 100px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--green-glow);
+}
+.hero h1 {
+  font-size: clamp(40px, 7vw, 92px);
+  font-weight: 700;
+  line-height: 0.98;
+  color: var(--white);
+  margin-bottom: 32px;
+  letter-spacing: -0.04em;
+  max-width: 1100px;
+}
+.hero h1 .accent {
+  color: var(--silver-blue);
+  font-weight: 200;
+  font-style: italic;
+}
+.hero h1 .underline {
+  background-image: linear-gradient(180deg, transparent 82%, var(--blue) 82%, var(--blue) 95%, transparent 95%);
+  padding: 0 0.05em;
+  display: inline;
+}
+.hero-sub {
+  font-size: 19px;
+  color: var(--silver-light);
+  max-width: 720px;
+  line-height: 1.55;
+  font-weight: 300;
+  margin-bottom: 56px;
+}
+.hero-meta-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-meta-item .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 10px;
+}
+.hero-meta-item .value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* === DEPENDENCY CALLOUT === */
+.dependency {
+  background: var(--navy-deep);
+  padding: 0 40px 100px;
+  position: relative;
+}
+.dependency-card {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(0,37,219,0.12) 0%, rgba(0,37,219,0.02) 100%);
+  border: 1px solid rgba(0,37,219,0.3);
+  border-left: 4px solid var(--blue);
+  padding: 40px 48px;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+.dependency-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue-glow);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(0,37,219,0.15);
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dependency-text {
+  color: var(--silver-light);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.dependency-text strong { color: var(--white); font-weight: 600; }
+.dependency-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: right;
+  line-height: 1;
+}
+.dependency-date span {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin-top: 8px;
+}
+
+/* === SECTIONS === */
+section { padding: 88px 40px; }
+.container { max-width: 1280px; margin: 0 auto; }
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-eyebrow::before {
+  content: ''; width: 32px; height: 2px;
+  background: var(--blue);
+}
+.section-title {
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  letter-spacing: -0.025em;
+  max-width: 900px;
+}
+.section-title em { font-style: normal; color: var(--silver-blue); font-weight: 300; }
+.section-intro {
+  font-size: 17px;
+  color: #555;
+  max-width: 780px;
+  line-height: 1.6;
+  margin-bottom: 56px;
+  font-weight: 300;
+}
+
+/* === GANTT TIMELINE === */
+.timeline-section {
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: var(--white);
+  padding: 96px 40px;
+}
+.timeline-section .section-eyebrow { color: var(--green); }
+.timeline-section .section-eyebrow::before { background: var(--green); }
+.timeline-section .section-title { color: var(--white); }
+.timeline-section .section-intro { color: var(--silver-light); }
+
+.timeline-context {
+  margin: 0 0 32px;
+  padding: 18px 24px;
+  background: rgba(0, 37, 219, 0.1);
+  border-left: 3px solid var(--blue-bright);
+  border-radius: 4px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.timeline-context .ctx-tag {
+  font-size: 10px;
+  color: var(--blue-glow);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.timeline-context .ctx-text {
+  color: var(--silver-light);
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.gantt {
+  margin-top: 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 40px;
+}
+.gantt-months {
+  display: grid;
+  grid-template-columns: 160px repeat(6, 1fr);
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.gantt-months .label-spacer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  align-self: center;
+}
+.gantt-month {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--silver-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: center;
+  padding: 0 8px;
+  position: relative;
+  font-weight: 500;
+}
+.gantt-month .year {
+  display: block;
+  font-size: 9px;
+  color: var(--silver-blue);
+  opacity: 0.5;
+  margin-top: 2px;
+  font-weight: 400;
+}
+.gantt-month.active {
+  color: var(--white);
+}
+.gantt-month.active::after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px; height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 16px var(--green-glow);
+}
+.gantt-track {
+  display: grid;
+  grid-template-columns: 160px repeat(6, 1fr);
+  align-items: center;
+  margin-top: 28px;
+  position: relative;
+}
+.gantt-track::before {
+  content: '';
+  position: absolute;
+  left: 160px; right: 0; top: 50%;
+  height: 1px;
+  background: rgba(255,255,255,0.04);
+  z-index: 0;
+}
+.gantt-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-right: 24px;
+  font-weight: 600;
+}
+.gantt-bar {
+  position: relative;
+  z-index: 2;
+  height: 44px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  cursor: default;
+  transition: all 0.3s;
+  letter-spacing: -0.005em;
+}
+.gantt-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.gantt-bar .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  margin-left: auto;
+  opacity: 0.7;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.bar-empalme {
+  grid-column: 3;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+  box-shadow: 0 0 24px rgba(0,37,219,0.4);
+}
+.bar-ajustes {
+  grid-column: 3 / span 2;
+  background: linear-gradient(90deg, rgba(0,37,219,0.5) 0%, var(--blue-bright) 50%, rgba(61,91,232,0.4) 100%);
+  border: 1px dashed var(--blue-bright);
+  margin-left: 45%;
+  margin-right: 50%;
+  box-shadow: 0 0 16px rgba(0,37,219,0.25);
+}
+.bar-operacion {
+  grid-column: 4 / span 3;
+  background: linear-gradient(90deg, var(--green) 0%, rgba(0,204,102,0.5) 60%, transparent 100%);
+  margin-left: 0;
+  position: relative;
+  box-shadow: 0 0 24px rgba(0,204,102,0.25);
+}
+
+/* === NEW GANTT TRACK STRUCTURE (V2) === */
+.gantt-track-v2 {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  margin-top: 16px;
+  position: relative;
+}
+.gantt-track-v2 .gantt-label {
+  padding-right: 24px;
+}
+.track-area {
+  position: relative;
+  height: 44px;
+  z-index: 2;
+}
+.track-area.tall {
+  height: 68px;
+}
+.track-bar {
+  position: absolute;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 2;
+  transition: all 0.3s;
+}
+.track-bar .tb-text { font-size: inherit; }
+.track-bar .tb-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  margin-left: auto;
+  opacity: 0.7;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* Etapa 1 main bar (1 JUN → 1 JUL) */
+.tb-etapa1-main {
+  top: 0;
+  left: 16.667%;
+  width: 16.667%;
+  height: 36px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+  box-shadow: 0 0 24px rgba(0,37,219,0.4);
+  z-index: 3;
+}
+
+/* Etapa 1 shadow (15 JUN → 15 JUL) - extends below + to the right */
+.tb-etapa1-shadow {
+  top: 38px;
+  left: 25%;
+  width: 16.667%;
+  height: 26px;
+  background: linear-gradient(90deg, rgba(0,37,219,0.22) 0%, rgba(61,91,232,0.14) 100%);
+  border: 1px dashed rgba(102,128,255,0.6);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--silver-light);
+  z-index: 2;
+  letter-spacing: 0.01em;
+}
+
+/* Operación recurrente (1 JUL →) */
+.tb-operacion {
+  top: 0;
+  left: 33.333%;
+  width: 66.667%;
+  height: 36px;
+  background: linear-gradient(90deg, var(--green) 0%, rgba(0,204,102,0.5) 60%, transparent 100%);
+  box-shadow: 0 0 24px rgba(0,204,102,0.25);
+}
+.tb-operacion::after {
+  content: '►';
+  position: absolute;
+  right: 8px; top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+}
+
+/* Compact gantt for cronograma */
+.cronograma .gantt {
+  padding: 28px 28px 32px;
+}
+.cronograma .gantt-months {
+  padding-bottom: 18px;
+}
+.cronograma .key-dates-row {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  min-height: 58px;
+}
+.cronograma .kd-col {
+  height: 58px;
+}
+
+/* === CRONOGRAMA SECTION === */
+.cronograma {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.cronograma::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,37,219,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cronograma .section-eyebrow { color: var(--green); }
+.cronograma .section-eyebrow::before { background: var(--green); }
+.cronograma .section-title { color: var(--white); }
+.cronograma .section-intro { color: var(--silver-light); position: relative; z-index: 2; }
+.cronograma .gantt {
+  position: relative;
+  z-index: 2;
+}
+
+/* Key dates row (pins above tracks) */
+.key-dates-row {
+  display: grid;
+  grid-template-columns: 160px repeat(6, 1fr);
+  margin-top: 12px;
+  margin-bottom: 14px;
+  min-height: 72px;
+}
+.kd-col {
+  position: relative;
+  height: 72px;
+}
+.kd-pin {
+  position: absolute;
+  top: 0;
+  padding-left: 10px;
+  border-left: 1px dashed rgba(0, 204, 102, 0.55);
+  height: 100%;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.kd-pin.alt {
+  border-left-color: rgba(102, 128, 255, 0.55);
+}
+.kd-pin .kd-date {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.kd-pin.alt .kd-date {
+  color: var(--blue-glow);
+}
+.kd-pin .kd-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--silver-light);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+/* Tracks container with vlines overlay */
+.tracks-container {
+  position: relative;
+}
+.vlines {
+  display: grid;
+  grid-template-columns: 160px repeat(6, 1fr);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.vl-col {
+  position: relative;
+}
+.vl {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 0;
+  border-left: 1px dashed rgba(0, 204, 102, 0.4);
+  pointer-events: none;
+}
+.vl.alt {
+  border-left-color: rgba(102, 128, 255, 0.4);
+}
+.cronograma-example {
+  margin-top: 28px;
+  padding: 18px 24px;
+  background: rgba(0, 204, 102, 0.08);
+  border-left: 3px solid var(--green);
+  border-radius: 4px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.cronograma-example .ce-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--green-glow);
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cronograma-example .ce-text {
+  color: var(--silver-light);
+  font-size: 14.5px;
+  line-height: 1.55;
+  font-weight: 300;
+}
+.cronograma-example .ce-text strong { color: var(--white); font-weight: 600; }
+.bar-phase2::after {
+  content: '►';
+  position: absolute;
+  right: -2px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--silver-blue);
+  font-size: 14px;
+}
+
+/* Milestones */
+.milestones {
+  display: grid;
+  grid-template-columns: 160px repeat(6, 1fr);
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.milestone-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.milestone {
+  position: relative;
+  padding: 0 8px;
+}
+.milestone-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-light);
+  letter-spacing: 0.05em;
+  text-align: center;
+  position: relative;
+}
+.milestone-text::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 12px;
+  background: var(--silver-blue);
+  margin: 0 auto 6px;
+}
+
+/* === FASE DETAIL === */
+.fase-detail {
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.fase-detail.alt { background: var(--navy); color: var(--white); }
+.fase-detail.alt .section-title { color: var(--white); }
+
+.fase-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.fase-detail.alt .fase-grid { grid-template-columns: 1fr 320px; }
+.fase-detail.alt .fase-aside { order: 2; }
+.fase-detail.alt .fase-main { order: 1; }
+
+.fase-aside .fase-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 120px;
+  font-weight: 200;
+  line-height: 0.9;
+  color: var(--silver-blue);
+  letter-spacing: -0.05em;
+}
+.fase-detail.alt .fase-num { color: rgba(136,144,181,0.5); }
+.fase-aside .fase-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--blue);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 20px;
+  font-weight: 600;
+  padding: 10px 16px;
+  background: rgba(0,37,219,0.08);
+  border-radius: 4px;
+  display: inline-block;
+}
+.fase-detail.alt .fase-period {
+  color: var(--green);
+  background: rgba(0,204,102,0.1);
+}
+.fase-aside .fase-duration {
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.08em;
+}
+
+.fase-main h3 {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.fase-detail.alt .fase-main h3 { color: var(--white); }
+.fase-main p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+.fase-detail.alt .fase-main p { color: var(--silver-light); }
+
+.fase-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.fase-point {
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  border-top: 2px solid var(--blue);
+  transition: all 0.3s;
+}
+.fase-detail.alt .fase-point {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-top: 2px solid var(--green);
+}
+.fase-point:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(31,31,62,0.08);
+}
+.fase-detail.alt .fase-point:hover {
+  background: rgba(255,255,255,0.05);
+}
+.fase-point .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.fase-detail.alt .fase-point .num { color: var(--green); }
+.fase-point h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.fase-detail.alt .fase-point h5 { color: var(--white); }
+.fase-point .desc {
+  font-size: 13.5px;
+  color: #555;
+  line-height: 1.6;
+}
+.fase-detail.alt .fase-point .desc { color: var(--silver-light); }
+
+.fase-note {
+  margin-top: 40px;
+  padding: 24px 28px;
+  background: rgba(0,37,219,0.04);
+  border-left: 2px solid var(--blue);
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  font-style: italic;
+  border-radius: 2px;
+}
+.fase-detail.alt .fase-note {
+  background: rgba(0,204,102,0.06);
+  border-left-color: var(--green);
+  color: var(--silver-light);
+}
+
+/* === CLOSING COMMITMENT (inside Fase 2) === */
+.closing-commitment {
+  margin-top: 56px;
+  padding: 44px 48px;
+  background: linear-gradient(135deg, rgba(0,204,102,0.1) 0%, rgba(0,204,102,0.02) 100%);
+  border: 1px solid rgba(0,204,102,0.3);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.closing-commitment::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,204,102,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cc-number {
+  border-right: 1px solid rgba(255,255,255,0.1);
+  padding-right: 48px;
+}
+.cc-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--green);
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.cc-big {
+  font-family: 'Poppins', sans-serif;
+  font-size: 76px;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+.cc-big span {
+  color: var(--green);
+  font-weight: 200;
+}
+.cc-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 14px;
+  font-weight: 500;
+}
+.cc-text p {
+  font-size: 16px;
+  color: var(--silver-light);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+.cc-text p strong {
+  color: var(--white);
+  font-weight: 600;
+}
+.cc-note {
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--silver-blue);
+  font-size: 12.5px;
+  color: var(--silver-light);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* === EL PLAN (CONSOLIDATED) === */
+.plan { background: var(--paper); }
+.plan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 24px;
+}
+.plan-phase {
+  padding: 36px 32px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  border-top: 3px solid var(--silver-blue);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.plan-phase.highlight {
+  border-top-color: var(--blue);
+  box-shadow: 0 16px 40px rgba(0, 37, 219, 0.06);
+}
+.plan-phase:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(31, 31, 62, 0.1);
+}
+.phase-head {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.phase-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 56px;
+  font-weight: 200;
+  color: var(--silver-blue);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.plan-phase.highlight .phase-num { color: var(--blue); }
+.phase-meta { flex: 1; }
+.phase-period {
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.phase-dates {
+  font-size: 12px;
+  color: var(--silver-blue);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+.plan-phase h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  letter-spacing: -0.015em;
+}
+.plan-phase > p {
+  font-size: 14.5px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+.phase-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.phase-bullets li {
+  padding: 11px 0 11px 24px;
+  position: relative;
+  font-size: 14px;
+  color: #333;
+  border-top: 1px solid var(--line);
+  font-weight: 400;
+  line-height: 1.45;
+}
+.phase-bullets li:first-child { border-top: none; padding-top: 4px; }
+.phase-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 19px;
+  width: 12px; height: 1px;
+  background: var(--silver-blue);
+}
+.plan-phase.highlight .phase-bullets li::before { background: var(--blue); }
+
+/* Closing commitment as inset dark card on paper */
+.closing-commitment-v2 {
+  margin-top: 48px;
+  padding: 44px 48px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+}
+.closing-commitment-v2::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+  z-index: 3;
+}
+.closing-commitment-v2::after {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(0,204,102,0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cc2-number {
+  border-right: 1px solid rgba(255,255,255,0.12);
+  padding-right: 48px;
+  position: relative;
+  z-index: 2;
+}
+.cc2-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--green);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.cc2-big {
+  font-family: 'Poppins', sans-serif;
+  font-size: 84px;
+  font-weight: 200;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+.cc2-big span {
+  color: var(--green);
+  font-weight: 200;
+}
+.cc2-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+.cc2-text { position: relative; z-index: 2; }
+.cc2-text p {
+  font-size: 16px;
+  color: var(--silver-light);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.cc2-text p strong { color: var(--white); font-weight: 600; }
+.cc2-note {
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.05);
+  border-left: 2px solid var(--silver-blue);
+  font-size: 12.5px;
+  color: var(--silver-light);
+  line-height: 1.6;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Fase 3 footnote (within Plan section) */
+.plan-future {
+  margin-top: 36px;
+  padding: 22px 32px;
+  background: var(--paper-warm);
+  border: 1px dashed var(--silver-blue);
+  border-radius: 4px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.plan-future .future-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  white-space: nowrap;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.plan-future .future-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--silver-blue);
+  margin-bottom: 4px;
+}
+.plan-future .future-content p {
+  font-size: 13.5px;
+  color: #777;
+  line-height: 1.55;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* === FASE 3 (future) === */
+.future {
+  background: var(--paper-warm);
+  padding: 80px 40px;
+}
+.future-card {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px;
+  background: var(--white);
+  border: 1px dashed var(--silver-blue);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.future-card .num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 88px;
+  font-weight: 200;
+  color: var(--silver-blue);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+.future-card h3 {
+  font-size: 24px;
+  margin-bottom: 6px;
+  color: var(--silver-blue);
+  font-weight: 600;
+}
+.future-card .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.future-card p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* === EQUIPO === */
+.equipo {
+  background: var(--navy-deep);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.equipo::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,37,219,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.equipo .section-eyebrow { color: var(--silver-blue); }
+.equipo .section-eyebrow::before { background: var(--silver-blue); }
+.equipo .section-title { color: var(--white); }
+.equipo .section-intro { color: var(--silver-light); }
+
+.layers {
+  position: relative;
+  z-index: 2;
+}
+.layer {
+  display: grid;
+  grid-template-columns: 100px 240px 1fr;
+  gap: 48px;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  align-items: center;
+  transition: all 0.3s;
+}
+.layer:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.layer:hover {
+  background: rgba(255,255,255,0.02);
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.layer .layer-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--silver-blue);
+  letter-spacing: -0.02em;
+}
+.layer .layer-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+}
+.layer .layer-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+.layer .layer-desc {
+  font-size: 15px;
+  color: var(--silver-light);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.layer.highlight .layer-num { color: var(--green); }
+.layer.highlight .layer-name { color: var(--white); }
+.layer.highlight .layer-tag { color: var(--green); }
+.layer.highlight {
+  background: linear-gradient(90deg, rgba(0,204,102,0.06) 0%, transparent 80%);
+}
+
+.equipo-callout {
+  margin-top: 64px;
+  padding: 32px 40px;
+  border-left: 2px solid var(--green);
+  background: rgba(0,204,102,0.04);
+}
+.equipo-callout p {
+  font-size: 16px;
+  color: var(--silver-light);
+  line-height: 1.7;
+}
+.equipo-callout strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* === ENTREGABLES === */
+.entregables { background: var(--paper); }
+.entregables-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+.deliverable {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px 28px;
+  transition: all 0.3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.deliverable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(31,31,62,0.06);
+  border-color: var(--blue);
+}
+.deliverable .freq {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  display: inline-block;
+  width: fit-content;
+  font-weight: 600;
+}
+.freq-monthly { background: rgba(0,37,219,0.08); color: var(--blue); }
+.freq-weekly { background: rgba(0,204,102,0.08); color: var(--green); }
+.freq-once { background: rgba(136,144,181,0.15); color: var(--silver-blue); }
+.freq-continuous { background: rgba(0,37,219,0.04); color: var(--blue); border: 1px dashed var(--blue); }
+
+.deliverable h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.deliverable p {
+  font-size: 13.5px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Grid sizing */
+.deliverable.size-lg { grid-column: span 6; }
+.deliverable.size-md { grid-column: span 4; }
+.deliverable.size-sm { grid-column: span 3; }
+
+/* === COMPROMISOS === */
+.compromisos { background: var(--white); }
+.compromisos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 24px;
+}
+.compromiso {
+  padding: 48px 44px;
+  background: var(--paper);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.compromiso::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: var(--blue);
+}
+.compromiso.b::before { background: var(--green); }
+.compromiso .from {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.compromiso.b .from { color: var(--green); }
+.compromiso h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.compromiso p {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.compromiso p strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+.compromiso p + p { margin-top: 16px; }
+
+/* === INVERSIÓN === */
+.inversion {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.inversion::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 60%; height: 100%;
+  background: radial-gradient(ellipse at top right, rgba(0,37,219,0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+.inversion .section-eyebrow { color: var(--green); }
+.inversion .section-eyebrow::before { background: var(--green); }
+.inversion .section-title { color: var(--white); }
+.inversion .section-intro { color: var(--silver-light); }
+
+.price-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 64px;
+  backdrop-filter: blur(20px);
+  margin-top: 48px;
+  text-align: center;
+}
+.price-top {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 48px;
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+.price-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.price-main .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.price-amount {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(56px, 9vw, 104px);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  display: flex;
+  align-items: flex-start;
+}
+.price-amount .currency {
+  font-size: 0.4em;
+  color: var(--silver-blue);
+  font-weight: 400;
+  margin-right: 14px;
+  margin-top: 18px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+.price-amount .unit {
+  font-size: 0.3em;
+  color: var(--silver-blue);
+  font-weight: 400;
+  margin-left: 12px;
+  align-self: flex-end;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.price-tax {
+  font-size: 13px;
+  color: var(--silver-light);
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+.price-side {
+  text-align: right;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  padding-left: 48px;
+}
+.price-side .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.price-side .value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1;
+}
+.price-side .value span {
+  display: block;
+  font-size: 12px;
+  color: var(--silver-blue);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.includes-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.includes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 40px;
+}
+.includes li {
+  list-style: none;
+  padding-left: 28px;
+  position: relative;
+  font-size: 14.5px;
+  color: var(--silver-light);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.includes li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 14px; height: 1px;
+  background: var(--green);
+}
+
+/* === PRÓXIMOS PASOS === */
+.pasos { background: var(--paper); padding: 64px 40px; }
+.pasos .section-title { margin-bottom: 32px; }
+.pasos-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 16px;
+  position: relative;
+}
+.paso {
+  padding: 28px 28px;
+  background: var(--white);
+  position: relative;
+  border-right: 1px solid var(--line);
+}
+.paso:last-child { border-right: none; }
+.paso:first-child { border-radius: 4px 0 0 4px; }
+.paso:last-child { border-radius: 0 4px 4px 0; }
+
+.paso .num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+  color: var(--silver-blue);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 8px;
+}
+.paso .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.paso h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.paso p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.55;
+  font-weight: 300;
+}
+.paso .arrow {
+  position: absolute;
+  right: -10px; top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--silver-blue);
+  font-size: 11px;
+  z-index: 2;
+  border: 1px solid var(--line);
+}
+.paso:last-child .arrow { display: none; }
+
+/* === FOOTER === */
+footer {
+  background: var(--navy-deep);
+  color: var(--silver-light);
+  padding: 80px 40px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+footer .brand {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+footer .brand span { color: var(--silver-blue); font-weight: 300; }
+footer .tagline {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--green);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+footer .disclaimer {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 12px;
+  color: var(--silver-blue);
+  line-height: 1.7;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-weight: 300;
+}
+
+/* === CÓMO OPERAMOS (TABS) === */
+.operations { background: var(--white); }
+
+.tabs {
+  margin-top: 24px;
+}
+.tab-buttons {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 56px;
+  position: relative;
+}
+.tab-btn {
+  flex: 1;
+  padding: 22px 24px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--silver-blue);
+  transition: all 0.25s ease;
+  position: relative;
+  margin-bottom: -1px;
+}
+.tab-btn:hover {
+  color: var(--navy);
+  background: rgba(0, 37, 219, 0.03);
+}
+.tab-btn.active {
+  color: var(--navy);
+  border-bottom-color: var(--blue);
+}
+.tab-btn .tab-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+.tab-btn.active .tab-num { color: var(--blue); }
+.tab-btn .tab-name {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.tab-content {
+  display: none;
+  animation: tabFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tab-content.active { display: block; }
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === TAB: EQUIPO === */
+.team-layers { display: grid; gap: 0; }
+.team-layer {
+  display: grid;
+  grid-template-columns: 80px 260px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  align-items: center;
+  transition: all 0.25s ease;
+}
+.team-layer:last-child { border-bottom: 1px solid var(--line); }
+.team-layer:hover { background: var(--paper-warm); padding-left: 16px; padding-right: 16px; }
+.team-layer .tl-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--silver-blue);
+  letter-spacing: -0.02em;
+}
+.team-layer.highlight .tl-num { color: var(--blue); }
+.team-layer .tl-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.team-layer.highlight .tl-tag { color: var(--blue); }
+.team-layer .tl-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.team-layer .tl-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.team-callout {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: rgba(0, 37, 219, 0.04);
+  border-left: 3px solid var(--blue);
+  border-radius: 2px;
+}
+.team-callout p {
+  font-size: 14.5px;
+  color: #333;
+  line-height: 1.65;
+}
+.team-callout strong { color: var(--navy); font-weight: 600; }
+
+/* === TAB: ENTREGABLES === */
+.deliv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.deliv-item {
+  padding: 22px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+.deliv-item:hover {
+  background: var(--white);
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(31, 31, 62, 0.06);
+}
+.deliv-item .dv-freq {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  display: inline-block;
+  font-weight: 700;
+}
+.dv-freq.monthly { background: rgba(0,37,219,0.08); color: var(--blue); }
+.dv-freq.weekly { background: rgba(0,204,102,0.1); color: var(--green); }
+.dv-freq.once { background: rgba(136,144,181,0.18); color: var(--silver-blue); }
+.dv-freq.continuous { background: transparent; color: var(--blue); border: 1px dashed var(--blue); }
+.deliv-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.deliv-item p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* === TAB: COMPROMISOS === */
+.commit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.commit-card {
+  padding: 36px 32px;
+  background: var(--paper);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.commit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--blue);
+}
+.commit-card.b::before { background: var(--green); }
+.commit-card .cm-from {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.commit-card.b .cm-from { color: var(--green); }
+.commit-card h3 {
+  font-size: 19px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.commit-card p {
+  color: #444;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 300;
+}
+.commit-card p strong { color: var(--navy); font-weight: 600; }
+.commit-card p + p { margin-top: 12px; }
+/* === CONTEXTO === */
+.contexto { background: var(--paper); }
+.ctx-list {
+  list-style: none;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.ctx-list li {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+  transition: background 0.25s ease;
+}
+.ctx-list li:hover { background: var(--paper-warm); padding-left: 16px; padding-right: 16px; }
+.ctx-list .ctx-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--silver-blue);
+  letter-spacing: 0.1em;
+}
+.ctx-list .ctx-line {
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.55;
+  font-weight: 400;
+}
+.ctx-list .ctx-line strong { color: var(--navy); font-weight: 700; }
+.ctx-list li.emph {
+  background: linear-gradient(90deg, rgba(0,37,219,0.04) 0%, transparent 80%);
+  border-left: 3px solid var(--blue);
+  padding-left: 16px;
+}
+.ctx-list li.emph .ctx-num { color: var(--blue); }
+
+/* === FASES TOGGLE === */
+.fases-section { background: var(--white); }
+.fase-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 24px;
+  margin-bottom: 56px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.fase-toggle-btn {
+  padding: 24px 28px;
+  background: var(--paper);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--silver-blue);
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  border-right: 1px solid var(--line);
+}
+.fase-toggle-btn:last-child { border-right: none; }
+.fase-toggle-btn:hover {
+  color: var(--navy);
+  background: var(--white);
+}
+.fase-toggle-btn.active {
+  background: var(--navy);
+  color: var(--white);
+}
+.fase-toggle-btn .ft-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--silver-blue);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+.fase-toggle-btn.active .ft-num {
+  color: var(--green);
+}
+.fase-toggle-btn .ft-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.35;
+}
+
+.fase-content {
+  display: none;
+  animation: faseFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fase-content.active { display: block; }
+@keyframes faseFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fase Timing callout */
+.fase-timing {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 28px 32px;
+  background: var(--navy-deep);
+  color: var(--white);
+  border-radius: 6px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.fase-timing::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--blue);
+}
+.fase-timing .ft-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue-glow);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+.fase-timing .ft-body p {
+  font-size: 14.5px;
+  color: var(--silver-light);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.fase-timing .ft-body p + p { margin-top: 12px; }
+
+/* Fase Intro (Fase 2) */
+.fase-intro {
+  margin-bottom: 40px;
+  padding: 0 8px;
+}
+.fase-intro p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.fase-intro p + p { margin-top: 14px; }
+
+/* Blocks grid */
+.blocks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.block {
+  padding: 28px 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  border-top: 3px solid var(--silver-blue);
+  transition: all 0.25s ease;
+}
+.block:hover {
+  background: var(--white);
+  border-top-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(31, 31, 62, 0.06);
+}
+.block.highlight {
+  background: linear-gradient(135deg, var(--white) 0%, rgba(0,37,219,0.03) 100%);
+  border-top-color: var(--blue);
+}
+.block-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.block p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.65;
+  font-weight: 300;
+}
+.block p + p { margin-top: 12px; }
+.block-list {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+}
+.block-list li {
+  padding: 5px 0 5px 22px;
+  position: relative;
+  font-size: 13.5px;
+  color: #333;
+  line-height: 1.5;
+}
+.block-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 14px;
+  width: 12px; height: 1px;
+  background: var(--silver-blue);
+}
+.block-callout {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: rgba(0, 204, 102, 0.08);
+  border-left: 3px solid var(--green);
+  border-radius: 2px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.55;
+  font-weight: 400;
+}
+.block-callout strong { color: var(--navy); font-weight: 700; }
+
+/* Fase Deliverables */
+.fase-deliverables {
+  padding: 36px 40px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 6px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.fase-deliverables::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(0,37,219,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.fd-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+.fd-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+.fd-list li {
+  padding: 16px 0 16px 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.fd-list li:first-child { border-top: none; }
+.fd-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0; top: 16px;
+  color: var(--green);
+  font-weight: 600;
+  font-size: 14px;
+}
+.fd-list h5 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+  letter-spacing: -0.005em;
+}
+.fd-list .fd-sub {
+  font-size: 13px;
+  color: var(--silver-light);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Grouped deliverables (Fase 2) */
+.fase-deliverables.grouped .fd-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+.fd-group h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--blue-glow);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.fd-group ul {
+  list-style: none;
+  padding: 0;
+}
+.fd-group ul li {
+  padding: 8px 0 8px 18px;
+  position: relative;
+  font-size: 13px;
+  color: var(--silver-light);
+  line-height: 1.5;
+  font-weight: 300;
+}
+.fd-group ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 15px;
+  width: 10px; height: 1px;
+  background: var(--green);
+}
+
+/* Fase Notes */
+.fase-notes {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 28px 32px;
+  background: var(--paper-warm);
+  border: 1px dashed var(--silver-blue);
+  border-radius: 6px;
+}
+.fn-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+.fn-body p {
+  font-size: 13.5px;
+  color: #666;
+  line-height: 1.65;
+  font-weight: 300;
+}
+.fn-body p + p { margin-top: 10px; }
+
+/* === OPERATIONS (no tabs anymore) === */
+.operations { background: var(--paper); }
+.ops-intro {
+  max-width: 820px;
+  margin-bottom: 56px;
+}
+.ops-intro p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.ops-intro p + p { margin-top: 14px; }
+
+.ops-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+.ops-block-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.ops-commitment .ops-block-label { color: var(--green); }
+
+.commitment-card {
+  padding: 32px;
+  background: var(--white);
+  border-radius: 6px;
+  border-top: 3px solid var(--green);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--green);
+}
+.commitment-card p {
+  font-size: 14.5px;
+  color: #333;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.fade-up.d1 { animation-delay: 0.1s; }
+.fade-up.d2 { animation-delay: 0.2s; }
+.fade-up.d3 { animation-delay: 0.35s; }
+.fade-up.d4 { animation-delay: 0.5s; }
+.fade-up.d5 { animation-delay: 0.65s; }
+
+@keyframes barFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.gantt-bar {
+  transform-origin: left center;
+  animation: barFill 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.bar-empalme { animation-delay: 0.2s; transform: scaleX(0); }
+.bar-ajustes { animation-delay: 0.6s; transform: scaleX(0); }
+.bar-operacion { animation-delay: 1.0s; transform: scaleX(0); }
+
+/* === FASE HEADER (rediseño Sección 03) === */
+.fase-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  padding: 36px 40px;
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  border-radius: 8px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+}
+.fase-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--blue);
+}
+.fase-content#fase-2 .fase-header::before { background: var(--green); }
+.fase-header::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(0,37,219,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.fase-content#fase-2 .fase-header::after {
+  background: radial-gradient(circle, rgba(0,204,102,0.18) 0%, transparent 70%);
+}
+.fh-left {
+  position: relative;
+  z-index: 2;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  padding-right: 32px;
+}
+.fh-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 88px;
+  font-weight: 200;
+  color: var(--white);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+.fh-num span { color: var(--blue-glow); font-weight: 300; }
+.fase-content#fase-2 .fh-num span { color: var(--green); }
+.fh-duration {
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.fh-meta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fh-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--blue-glow);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.fase-content#fase-2 .fh-eyebrow { color: var(--green); }
+.fh-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.fh-tags {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.fh-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  font-size: 12.5px;
+  color: var(--silver-light);
+  font-weight: 400;
+}
+.fh-tag strong {
+  color: var(--white);
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* === ENHANCED BLOCKS (sección 03) === */
+.blocks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.block {
+  padding: 32px 32px 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  border-top: 3px solid var(--silver-blue);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.block::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 60px; height: 60px;
+  background: radial-gradient(circle at top right, rgba(0,37,219,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.block:hover {
+  background: var(--white);
+  border-top-color: var(--blue);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(31, 31, 62, 0.08);
+}
+.fase-content#fase-2 .block:hover {
+  border-top-color: var(--green);
+}
+.block.highlight {
+  background: linear-gradient(135deg, var(--white) 0%, rgba(0,204,102,0.04) 100%);
+  border-top-color: var(--green);
+}
+.block-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.fase-content#fase-2 .block-tag { color: var(--green); }
+.block-tag::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* === OPERATIONS REDESIGN (sección 04) === */
+.operations { background: var(--paper); }
+.ops-intro {
+  max-width: 820px;
+  margin-bottom: 64px;
+}
+.ops-intro p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.ops-intro p + p { margin-top: 14px; }
+
+.ops-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ops-module {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.ops-module:hover {
+  box-shadow: 0 16px 40px rgba(31,31,62,0.05);
+}
+.ops-module::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--blue);
+}
+.ops-module.green::before { background: var(--green); }
+
+.ops-module-head {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+.ops-module-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--blue);
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.ops-module.green .ops-module-num { color: var(--green); }
+.ops-module-head h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0;
+}
+.ops-module-intro {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 28px;
+  max-width: 820px;
+}
+.ops-module-intro + .ops-module-intro { margin-top: -16px; }
+.ops-module-intro strong { color: var(--navy); font-weight: 600; }
+
+/* TEAM (within module) */
+.team-layers-v2 {
+  display: grid;
+  gap: 0;
+  background: var(--paper);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.tl2-row {
+  display: grid;
+  grid-template-columns: 80px 280px 1fr;
+  gap: 32px;
+  padding: 22px 24px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  transition: all 0.25s ease;
+}
+.tl2-row:first-child { border-top: none; }
+.tl2-row:hover { background: var(--white); }
+.tl2-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--silver-blue);
+  letter-spacing: -0.02em;
+}
+.tl2-row.lead .tl2-num { color: var(--blue); font-weight: 600; }
+.tl2-meta {
+  display: flex;
+  flex-direction: column;
+}
+.tl2-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tl2-row.lead .tl2-tag { color: var(--blue); }
+.tl2-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.tl2-desc {
+  font-size: 13.5px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* COMMUNICATION GRID */
+.comm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.comm-card {
+  padding: 26px 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+.comm-card:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(31,31,62,0.05);
+}
+.comm-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.comm-target {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 12px;
+  padding: 8px 14px;
+  background: rgba(0,37,219,0.06);
+  border-radius: 4px;
+}
+.comm-card.green .comm-target {
+  color: var(--green);
+  background: rgba(0,204,102,0.08);
+}
+.comm-target::before { content: '→'; font-weight: 400; opacity: 0.7; }
+.comm-card p {
+  font-size: 13.5px;
+  color: #444;
+  line-height: 1.6;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* SCHEDULE / programación */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.schedule-item {
+  padding: 20px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  border-top: 2px solid var(--green);
+  transition: all 0.25s ease;
+}
+.schedule-item:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+}
+.schedule-day {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--green);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.schedule-task {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.schedule-note {
+  padding: 18px 24px;
+  background: rgba(0,37,219,0.04);
+  border-left: 3px solid var(--blue);
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.65;
+  font-weight: 400;
+}
+.schedule-note strong { color: var(--navy); font-weight: 700; }
+.schedule-disclaimer {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: #777;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+/* DELIVERY SESSION (entrega de resultados) */
+.delivery-session {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(0,204,102,0.06) 0%, rgba(0,204,102,0.02) 100%);
+  border: 1px solid rgba(0,204,102,0.2);
+  border-left: 3px solid var(--green);
+  border-radius: 6px;
+}
+.delivery-icon {
+  width: 56px; height: 56px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--green);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.delivery-body p {
+  font-size: 14.5px;
+  color: #333;
+  line-height: 1.65;
+  margin: 0;
+}
+.delivery-body p + p { margin-top: 8px; }
+.delivery-body p strong { color: var(--navy); font-weight: 700; }
+.delivery-participants {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.delivery-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 11.5px;
+  color: var(--navy);
+  font-weight: 600;
+}
+.delivery-pill::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+/* COMMITMENT POINTS (rebuilt) */
+.commit-points {
+  display: grid;
+  gap: 16px;
+}
+.commit-point {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  padding: 22px 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  align-items: start;
+  transition: all 0.25s ease;
+}
+.commit-point:hover {
+  background: var(--white);
+  border-color: rgba(0,37,219,0.2);
+}
+.cp-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -0.02em;
+  padding-top: 2px;
+}
+.commit-point p {
+  font-size: 14.5px;
+  color: #333;
+  line-height: 1.65;
+  font-weight: 400;
+  margin: 0;
+}
+.commit-point p strong { color: var(--navy); font-weight: 700; }
+
+/* === EDITORIAL SEQUENCE (rediseño bloques Sección 03) === */
+.blocks-sequence {
+  margin-bottom: 40px;
+  position: relative;
+}
+.seq-block {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 56px;
+  padding: 40px 0 40px;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.seq-block:first-child {
+  border-top: none;
+  padding-top: 8px;
+}
+.fase-content#fase-2 .seq-block { border-top-color: rgba(0,204,102,0.15); }
+
+.seq-marker {
+  position: relative;
+  padding-top: 4px;
+}
+.seq-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 84px;
+  font-weight: 200;
+  color: var(--blue);
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  display: flex;
+  align-items: flex-start;
+}
+.fase-content#fase-2 .seq-num { color: var(--green); }
+.seq-num span {
+  color: var(--silver-light);
+  font-weight: 100;
+  font-size: 0.5em;
+  align-self: flex-end;
+  margin-left: 4px;
+  margin-bottom: 12px;
+}
+.seq-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  line-height: 1.4;
+  max-width: 160px;
+}
+
+.seq-body h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 18px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  max-width: 680px;
+}
+.seq-body p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 720px;
+}
+.seq-body p + p { margin-top: 12px; }
+.seq-body p strong { color: var(--navy); font-weight: 600; }
+
+/* Pills/chips for lists */
+.seq-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 8px;
+  max-width: 720px;
+}
+.seq-pill {
+  padding: 8px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--navy);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: all 0.2s ease;
+}
+.seq-pill:hover {
+  background: var(--white);
+  border-color: var(--blue);
+}
+.fase-content#fase-2 .seq-pill {
+  background: rgba(0,204,102,0.04);
+  border-color: rgba(0,204,102,0.18);
+}
+.fase-content#fase-2 .seq-pill:hover { border-color: var(--green); }
+
+/* Inset callout */
+.seq-callout {
+  margin-top: 20px;
+  padding: 16px 22px;
+  background: rgba(0,37,219,0.03);
+  border-left: 2px solid var(--blue);
+  border-radius: 2px;
+  font-size: 13.5px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 300;
+  max-width: 720px;
+}
+.seq-callout strong { color: var(--navy); font-weight: 600; }
+.fase-content#fase-2 .seq-callout {
+  background: rgba(0,204,102,0.05);
+  border-left-color: var(--green);
+}
+.seq-callout.primary {
+  background: rgba(0,37,219,0.06);
+  border-left-color: var(--blue);
+  color: #333;
+  font-size: 14px;
+}
+.fase-content#fase-2 .seq-callout.primary {
+  background: rgba(0,204,102,0.08);
+  border-left-color: var(--green);
+  color: #2a2a55;
+}
+
+/* === ENHANCED ENTREGABLES (Sección 03) === */
+.fase-deliverables.v2 {
+  padding: 40px 44px;
+}
+.fd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+.fd-item {
+  padding: 22px 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  border-left: 2px solid var(--green);
+  transition: all 0.25s ease;
+}
+.fd-item:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+  border-left-color: var(--green-glow);
+}
+.fd-item .fd-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--green);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.fd-item h5 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+.fd-item p {
+  font-size: 12.5px;
+  color: var(--silver-light);
+  line-height: 1.55;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* === INTEGRATED TEAM + COMM (Sección 04) === */
+.team-comm-v3 {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.tcm-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 28px;
+  padding: 22px 26px;
+  border-top: 1px solid var(--line);
+  align-items: center;
+  transition: all 0.25s ease;
+}
+.tcm-row:first-child { border-top: none; }
+.tcm-row.contact {
+  grid-template-columns: 130px 1.1fr 1.2fr;
+  background: var(--white);
+}
+.tcm-row.lead {
+  background: linear-gradient(135deg, var(--white) 0%, rgba(0,37,219,0.04) 100%);
+}
+.tcm-row:hover {
+  background: var(--white);
+}
+.tcm-row.lead:hover {
+  background: linear-gradient(135deg, var(--white) 0%, rgba(0,37,219,0.06) 100%);
+}
+.tcm-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tcm-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--silver-blue);
+  line-height: 1;
+}
+.tcm-row.contact .tcm-num { color: var(--blue); font-weight: 500; }
+.tcm-row.lead .tcm-num { color: var(--blue); font-weight: 600; }
+.tcm-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.tcm-row.contact .tcm-tag,
+.tcm-row.lead .tcm-tag { color: var(--blue); }
+.tcm-mid .tcm-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 5px;
+  letter-spacing: -0.005em;
+}
+.tcm-mid .tcm-desc {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.55;
+  font-weight: 300;
+}
+.tcm-comm {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+.tcm-comm-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tcm-comm-tag::before {
+  content: '→';
+  font-weight: 400;
+  font-size: 11px;
+}
+.tcm-comm-desc {
+  font-size: 12.5px;
+  color: #555;
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* === RESPONSIVE additions === */
+@media (max-width: 960px) {
+  .fase-header { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px; }
+  .fh-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-right: 0; padding-bottom: 20px; }
+  .fh-num { font-size: 64px; }
+  .fh-title { font-size: 21px; }
+  .seq-block { grid-template-columns: 1fr; gap: 20px; padding: 32px 0; }
+  .seq-marker { display: flex; align-items: baseline; gap: 16px; }
+  .seq-num { font-size: 56px; }
+  .seq-tag { margin-top: 0; padding-top: 0; border-top: none; }
+  .ops-module { padding: 28px 24px; }
+  .tcm-row, .tcm-row.contact { grid-template-columns: 70px 1fr; gap: 16px; padding: 18px 18px; }
+  .tcm-row.contact .tcm-comm { grid-column: 1 / -1; padding-left: 0; border-left: none; padding-top: 12px; border-top: 1px solid var(--line); }
+  .fd-grid { grid-template-columns: 1fr; }
+  .fase-deliverables.v2 { padding: 28px 24px; }
+}
+  section { padding: 72px 24px; }
+  .hero { padding: 120px 24px 80px; }
+  .nav-inner { padding: 14px 24px; }
+  .nav-meta { display: none; }
+  .hero-meta-row { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .dependency-card { grid-template-columns: 1fr; gap: 20px; padding: 28px; }
+  .dependency-date { text-align: left; font-size: 24px; }
+  .dependency { padding: 0 24px 64px; }
+  .gantt { padding: 24px 16px; overflow-x: auto; }
+  .gantt-months, .gantt-track, .milestones {
+    grid-template-columns: 110px repeat(6, minmax(70px, 1fr));
+    min-width: 600px;
+  }
+  .fase-grid { grid-template-columns: 1fr; gap: 32px; }
+  .fase-detail.alt .fase-grid { grid-template-columns: 1fr; }
+  .fase-detail.alt .fase-aside { order: 1; }
+  .fase-detail.alt .fase-main { order: 2; }
+  .fase-aside .fase-num { font-size: 72px; }
+  .fase-points { grid-template-columns: 1fr; }
+  .plan-grid { grid-template-columns: 1fr; gap: 20px; }
+  .plan-phase { padding: 28px 24px; }
+  .closing-commitment-v2 { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px; }
+  .cc2-number { border-right: none; padding-right: 0; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .cc2-big { font-size: 60px; }
+  .plan-future { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px 24px; }
+  .closing-commitment { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px; }
+  .cc-number { border-right: none; padding-right: 0; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .cc-big { font-size: 56px; }
+
+  /* Tabs responsive */
+  .tab-buttons { overflow-x: auto; }
+  .tab-btn { padding: 16px 18px; flex: 0 0 auto; min-width: 140px; }
+  .tab-btn .tab-name { font-size: 15px; }
+  .team-layer { grid-template-columns: 50px 1fr; gap: 16px; padding: 20px 0; }
+  .team-layer .tl-desc { grid-column: 1 / -1; padding-top: 8px; }
+  .deliv-grid { grid-template-columns: 1fr; }
+  .commit-grid { grid-template-columns: 1fr; }
+
+  /* V6: Contexto, Fases toggle, blocks, deliverables, notes */
+  .ctx-list li { grid-template-columns: 50px 1fr; gap: 16px; padding: 20px 0; }
+  .ctx-list .ctx-line { font-size: 15px; }
+  .fase-toggle { grid-template-columns: 1fr; }
+  .fase-toggle-btn { border-right: none; border-bottom: 1px solid var(--line); }
+  .fase-toggle-btn:last-child { border-bottom: none; }
+  .fase-timing { grid-template-columns: 1fr; gap: 14px; padding: 22px 24px; }
+  .fase-notes { grid-template-columns: 1fr; gap: 14px; padding: 22px 24px; }
+  .blocks-grid { grid-template-columns: 1fr; }
+  .block { padding: 22px; }
+  .fase-deliverables { padding: 28px 24px; }
+  .fase-deliverables.grouped .fd-groups { grid-template-columns: 1fr; gap: 24px; }
+  .ops-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cronograma-example { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .key-dates-row, .vlines {
+    grid-template-columns: 110px repeat(6, minmax(70px, 1fr));
+    min-width: 600px;
+  }
+  .kd-pin .kd-date { font-size: 10px; }
+  .kd-pin .kd-label { font-size: 8.5px; }
+  .future-card { grid-template-columns: 1fr; gap: 20px; padding: 32px; }
+  .future-card .num { font-size: 56px; }
+  .layer { grid-template-columns: 60px 1fr; gap: 20px; padding: 28px 0; }
+  .layer .layer-name-cell { grid-column: 2; }
+  .layer .layer-desc-cell { grid-column: 1 / -1; }
+  .entregables-grid { grid-template-columns: 1fr; }
+  .deliverable.size-lg, .deliverable.size-md, .deliverable.size-sm { grid-column: 1; }
+  .compromisos-grid { grid-template-columns: 1fr; }
+  .price-card { padding: 32px 24px; }
+  .price-top { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .price-side { text-align: left; border-left: none; padding-left: 0; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; }
+  .includes { grid-template-columns: 1fr; }
+  .pasos-flow { grid-template-columns: 1fr; }
+  .paso { border-right: none; border-bottom: 1px solid var(--line); border-radius: 0; }
+  .paso:first-child { border-radius: 4px 4px 0 0; }
+  .paso:last-child { border-radius: 0 0 4px 4px; border-bottom: none; }
+  .paso .arrow { display: none; }
+}
+
+/* ===== TIMELINE V5 — Compact, restrained ===== */
+.tl5 {
+  margin-top: 32px;
+  padding: 24px 28px 22px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+}
+
+/* Months header */
+.tl5-months {
+  display: grid;
+  grid-template-columns: 130px repeat(6, 1fr);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 14px;
+}
+.tl5-month {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--silver-blue);
+  line-height: 1.1;
+}
+.tl5-month.active { color: var(--white); font-weight: 700; }
+.tl5-month .yr {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 400;
+  opacity: 0.45;
+  margin-top: 3px;
+  letter-spacing: 0.1em;
+}
+
+/* Pin rows (top and bottom) */
+.tl5-pinrow {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+}
+.tl5-pinrow-area {
+  position: relative;
+  height: 38px;
+}
+.tl5-pinrow.top .tl5-pinrow-area { padding-top: 2px; }
+.tl5-pinrow.bot .tl5-pinrow-area { padding-top: 4px; }
+
+.tl5-pin {
+  position: absolute;
+  top: 0;
+  padding-left: 8px;
+  height: 36px;
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1.15;
+}
+.tl5-pin.primary {
+  border-left: 1px dashed rgba(0, 204, 102, 0.55);
+}
+.tl5-pin.secondary {
+  border-left: 1px dashed rgba(102, 128, 255, 0.55);
+}
+.tl5-pin .tl5-date {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.tl5-pin.primary .tl5-date { color: var(--green); }
+.tl5-pin.secondary .tl5-date { color: var(--blue-glow); }
+.tl5-pin .tl5-lbl {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--silver-light);
+  margin-top: 3px;
+}
+
+/* Tracks */
+.tl5-track {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  padding: 7px 0;
+}
+.tl5-track + .tl5-track {
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+.tl5-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--silver-light);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding-right: 14px;
+  line-height: 1.35;
+}
+.tl5-label .sub {
+  display: block;
+  color: var(--silver-blue);
+  font-weight: 500;
+}
+
+.tl5-bar-area {
+  position: relative;
+  height: 20px;
+}
+.tl5-bar {
+  position: absolute;
+  top: 0;
+  height: 20px;
+  border-radius: 3px;
+  transition: transform 0.2s ease;
+}
+.tl5-bar:hover { transform: translateY(-1px); }
+
+.tl5-bar-etapa1 {
+  left: 16.667%;
+  width: 16.667%;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-bright) 100%);
+  box-shadow: 0 0 12px rgba(0, 37, 219, 0.3);
+}
+.tl5-bar-regulariza {
+  left: 25%;
+  width: 16.667%;
+  background: rgba(102, 128, 255, 0.1);
+  border: 1px dashed rgba(102, 128, 255, 0.55);
+}
+.tl5-bar-etapa2 {
+  left: 33.333%;
+  width: 66.667%;
+  background: linear-gradient(90deg, var(--green) 0%, rgba(0, 204, 102, 0.4) 70%, rgba(0, 204, 102, 0) 100%);
+  box-shadow: 0 0 12px rgba(0, 204, 102, 0.2);
+}
+.tl5-bar-etapa2::after {
+  content: '►';
+  position: absolute;
+  right: 8px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 880px) {
+  .tl5 { padding: 18px 18px 16px; }
+  .tl5-months, .tl5-pinrow, .tl5-track { grid-template-columns: 100px 1fr; }
+  .tl5-month { font-size: 9px; letter-spacing: 0.12em; }
+  .tl5-pin .tl5-lbl { font-size: 9.5px; }
+  .tl5-label { font-size: 9px; letter-spacing: 0.1em; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="dot"></span>
+      <svg class="nav-logo-svg" viewBox="110 449 775 101" xmlns="http://www.w3.org/2000/svg" aria-label="B Management">
+        <path d="M158.09,536.96h-15.22c-8.39,0-15.22-6.83-15.22-15.22,0-4.56,2.02-8.65,5.21-11.45,0,0,0,0-.01,0-4.6-.94-8.79-3-12.29-5.89-3.73,4.79-5.95,10.8-5.95,17.33,0,15.58,12.68,28.26,28.26,28.26h15.22v-13.04ZM158.09,450h-15.22c-8.9,0-16.84,4.13-22.03,10.58-3.9,4.84-6.23,11-6.23,17.68,0,8.73,3.98,16.55,10.23,21.74h0s0,0,0,0c4.9,4.07,11.18,6.52,18.04,6.52h43.48c8.39,0,15.22,6.83,15.22,15.22s-6.83,15.22-15.22,15.22h-15.22v13.04h15.22c15.58,0,28.26-12.68,28.26-28.26,0-8.73-3.98-16.55-10.22-21.74,0,0,0,0,0,0,0,0,0,0,0,0-4.89-4.07-11.18-6.52-18.03-6.52h0s-15.22,0-15.22,0h0s-13.04,0-13.04,0h-15.22c-8.39,0-15.22-6.83-15.22-15.22,0-3.09.92-5.96,2.51-8.36,2.72-4.13,7.41-6.86,12.71-6.86h15.22v-13.04ZM171.13,463.04h15.22c8.39,0,15.22,6.83,15.22,15.22,0,4.56-2.02,8.66-5.21,11.45,0,0,0,0,.01,0,4.6.94,8.79,3,12.29,5.89,3.73-4.79,5.95-10.8,5.95-17.33,0-15.58-12.68-28.26-28.26-28.26h-15.22v13.04Z" class="logo-dark"/>
+        <rect x="158.09" y="506.52" width="13.04" height="43.48" class="logo-blue"/>
+        <rect x="158.09" y="450" width="13.04" height="43.48" class="logo-blue"/>
+        <path d="M294.98,494.97h-8.19v-14.4h7.37c3.85,0,6.66.54,8.43,1.64,1.77,1.09,2.66,2.86,2.66,5.31,0,2.71-.82,4.63-2.46,5.75-1.64,1.13-4.24,1.7-7.81,1.7Z" class="logo-light"/>
+        <path d="M306.64,509.87c0,2.94-.91,5.1-2.73,6.47-1.82,1.36-4.51,2.04-8.07,2.04h-9.05v-16.5h8.62c3.78,0,6.6.66,8.45,1.96,1.85,1.31,2.78,3.32,2.78,6.03Z" class="logo-light"/>
+        <path d="M319.09,465.43h-46.63c-6.21,0-11.25,5.04-11.25,11.26v46.62c0,6.22,5.04,11.26,11.25,11.26h46.63c6.21,0,11.25-5.04,11.25-11.26v-46.62c0-6.22-5.04-11.26-11.25-11.26ZM310.72,521.57c-3.27,2.65-7.81,3.98-13.63,3.98h-18.82v-52.11h15.47c7.17,0,12.36,1.04,15.56,3.14,3.19,2.09,4.79,5.39,4.79,9.9,0,3.05-.79,5.58-2.35,7.6-1.57,2.02-3.83,3.29-6.78,3.81v.36c3.66.69,6.35,2.05,8.08,4.08,1.72,2.03,2.58,4.78,2.58,8.25,0,4.68-1.63,8.35-4.9,10.99Z" class="logo-light"/>
+        <path d="M401.8,474.2l-14.91,31.56-14.91-31.56h-12.11v51.06h8.46v-39.55l15.76,33.72h5.56l15.33-32.81v38.64h8.53v-51.06h-11.71Z" class="logo-light"/>
+        <path d="M450.92,474.2h-10.57l-17.43,51.06h8.98l3.85-11.59h19.33l3.73,11.59h8.94l-16.83-51.06ZM437.89,507.24l7.63-22.91,7.5,22.91h-15.13Z" class="logo-light"/>
+        <path d="M509.75,474.2v36.92l-23.26-36.92h-9.45v51.06h8.46v-37.85l23.94,37.85h8.77v-51.06h-8.46Z" class="logo-light"/>
+        <path d="M555.61,474.2h-10.56l-17.43,51.06h8.97l3.85-11.59h19.34l3.73,11.59h8.94l-16.84-51.06ZM542.59,507.24l7.62-22.91,7.51,22.91h-15.13Z" class="logo-light"/>
+        <path d="M611.42,512.54c-1.05,1.97-2.47,3.47-4.27,4.5-1.8,1.04-3.85,1.55-6.16,1.55-2.75,0-5.16-.78-7.24-2.34s-3.69-3.73-4.83-6.51c-1.13-2.78-1.7-6-1.7-9.65,0-3.97.66-7.39,1.98-10.26,1.33-2.87,3.09-5.09,5.3-6.63,2.21-1.55,4.66-2.33,7.33-2.33,2.25,0,4.29.57,6.13,1.69,1.84,1.13,3.49,2.79,4.95,4.99l8.53-2.19c-1.9-4.18-4.44-7.25-7.62-9.21s-7.04-2.94-11.59-2.94c-3.37,0-6.51.6-9.43,1.81-2.93,1.2-5.49,2.96-7.69,5.28-2.19,2.31-3.91,5.13-5.14,8.46-1.23,3.32-1.84,7.1-1.84,11.33,0,5.29.99,9.9,2.97,13.82,1.99,3.92,4.65,6.97,8,9.15,3.35,2.18,7.09,3.27,11.22,3.27,3.44,0,6.24-.86,8.4-2.57,2.05-1.64,3.59-3.94,4.61-6.88.05-.14.1-.29.15-.43,1.02-3.15,1.53-6.86,1.53-11.12h-2.03c0,2.84-.52,5.24-1.56,7.21ZM601.11,499.34v5.43l11.87.28v8.74l.35,3.09.93,8.38h6.86v-25.92h-20.01Z" class="logo-light"/>
+        <path d="M667.22,481.51v-7.31h-32.4v51.06h32.4v-7.38h-23.94v-14.57h22.51v-7.31h-22.51v-14.49h23.94Z" class="logo-light"/>
+        <path d="M722.85,474.2l-14.91,31.57-14.91-31.57h-12.11v51.06h8.46v-39.53l15.76,33.7h5.56l15.32-32.81v38.64h8.54v-51.06h-11.71Z" class="logo-light"/>
+        <path d="M782.04,481.51v-7.31h-32.39v51.06h32.39v-7.38h-23.94v-14.57h22.52v-7.31h-22.52v-14.49h23.94Z" class="logo-light"/>
+        <path d="M828.3,474.2v36.94l-23.27-36.94h-9.45v51.06h8.46v-37.85l23.94,37.85h8.77v-51.06h-8.45Z" class="logo-light"/>
+        <path d="M844.82,474.2v7.31h16.04v43.75h8.45v-43.75h16.08v-7.31h-40.57Z" class="logo-light"/>
+        <rect x="235.05" y="449.99" width="1" height="100.03" class="logo-light"/>
+      </svg>
+    </div>
+    <div class="nav-meta mono">PROPUESTA · PRI SAS · 2026</div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <h1 class="fade-up d1">
+      Claridad financiera para operar<br>con mayor <span class="underline">control y consistencia</span>.
+    </h1>
+    <p class="hero-sub fade-up d2">
+      Un modelo diseñado para estabilizar la operación financiera, generar información más confiable y construir una estructura de trabajo sólida y sostenible hacia adelante.
+    </p>
+    <div class="hero-meta-row fade-up d3">
+      <div class="hero-meta-item">
+        <div class="label mono">Cliente</div>
+        <div class="value">PRI SAS</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label mono">Preparado por</div>
+        <div class="value">B Management SAS</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label mono">Modalidad</div>
+        <div class="value">Tarifa mensual fija</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label mono">Alcance</div>
+        <div class="value">Fase 1 + operación recurrente</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CONTEXTO ============ -->
+<section class="contexto">
+  <div class="container">
+    <div class="section-eyebrow mono">01</div>
+    <h2 class="section-title">El contexto.</h2>
+
+    <ul class="ctx-list">
+      <li>
+        <span class="ctx-num mono">01</span>
+        <span class="ctx-line">Empresa familiar con cerca de <strong>40 años</strong> de trayectoria.</span>
+      </li>
+      <li>
+        <span class="ctx-num mono">02</span>
+        <span class="ctx-line">La operación financiera perdió consistencia operativa durante los últimos años.</span>
+      </li>
+      <li>
+        <span class="ctx-num mono">03</span>
+        <span class="ctx-line">Actualmente existe rezago en cierres y consolidación de información.</span>
+      </li>
+      <li>
+        <span class="ctx-num mono">04</span>
+        <span class="ctx-line">La información financiera disponible presenta limitaciones en trazabilidad, soporte y utilidad gerencial.</span>
+      </li>
+      <li class="emph">
+        <span class="ctx-num mono">05</span>
+        <span class="ctx-line">El objetivo no es reconstruir el pasado, sino <strong>estabilizar y profesionalizar la operación hacia adelante</strong>.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CRONOGRAMA ============ -->
+<section class="cronograma">
+  <div class="container">
+    <div class="section-eyebrow mono">02</div>
+    <h2 class="section-title">Línea de tiempo.</h2>
+    <p class="section-intro">
+      La Etapa 1 oficial dura aproximadamente un mes. La regularización de libros, una vez recibidos, se extiende cerca de un mes adicional en paralelo con el arranque de la Etapa 2. La Etapa 2 arranca al cierre de la Etapa 1 sin depender de la fecha exacta de recepción de información.
+    </p>
+
+    <div class="tl5">
+
+      <div class="tl5-months">
+        <div></div>
+        <div class="tl5-month">May<span class="yr">2026</span></div>
+        <div class="tl5-month active">Jun<span class="yr">2026</span></div>
+        <div class="tl5-month active">Jul<span class="yr">2026</span></div>
+        <div class="tl5-month">Ago<span class="yr">2026</span></div>
+        <div class="tl5-month">Sep<span class="yr">2026</span></div>
+        <div class="tl5-month">Oct →<span class="yr">2026</span></div>
+      </div>
+
+      <!-- Pines arriba: 01 JUN y 01 JUL (verde) -->
+      <div class="tl5-pinrow top">
+        <div></div>
+        <div class="tl5-pinrow-area">
+          <div class="tl5-pin primary" style="left: 16.667%">
+            <span class="tl5-date">01 JUN</span>
+            <span class="tl5-lbl">Inicio Etapa 1</span>
+          </div>
+          <div class="tl5-pin primary" style="left: 33.333%">
+            <span class="tl5-date">01 JUL</span>
+            <span class="tl5-lbl">Inicio Etapa 2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carriles -->
+      <div class="tl5-track">
+        <div class="tl5-label">Etapa 1</div>
+        <div class="tl5-bar-area">
+          <div class="tl5-bar tl5-bar-etapa1"></div>
+        </div>
+      </div>
+
+      <div class="tl5-track">
+        <div class="tl5-label">Regularización<span class="sub">de libros</span></div>
+        <div class="tl5-bar-area">
+          <div class="tl5-bar tl5-bar-regulariza"></div>
+        </div>
+      </div>
+
+      <div class="tl5-track">
+        <div class="tl5-label">Etapa 2</div>
+        <div class="tl5-bar-area">
+          <div class="tl5-bar tl5-bar-etapa2"></div>
+        </div>
+      </div>
+
+      <!-- Pines abajo: 15 JUN y 15 JUL (azul) -->
+      <div class="tl5-pinrow bot">
+        <div></div>
+        <div class="tl5-pinrow-area">
+          <div class="tl5-pin secondary" style="left: 25%">
+            <span class="tl5-date">15 JUN</span>
+            <span class="tl5-lbl">Recepción saldos</span>
+          </div>
+          <div class="tl5-pin secondary" style="left: 41.667%">
+            <span class="tl5-date">15 JUL</span>
+            <span class="tl5-lbl">Entregables Fase 1</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cronograma-example">
+      <span class="ce-tag mono">EJEMPLO</span>
+      <span class="ce-text">La <strong>Etapa 1 oficial</strong> va del 1 de junio al 1 de julio. Si los libros se entregan el <strong>15 de junio</strong>, la regularización se extiende hasta el <strong>15 de julio</strong>. La <strong>Etapa 2</strong> arranca el 1 de julio en cualquier escenario.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FASES (TOGGLE) ============ -->
+<section class="fases-section">
+  <div class="container">
+    <div class="section-eyebrow mono">03</div>
+    <h2 class="section-title">Dos fases para estabilizar la operación y construir una base financiera <em>más sólida y confiable.</em></h2>
+
+    <div class="fase-toggle">
+      <button class="fase-toggle-btn active" data-fase="1">
+        <span class="ft-num mono">01</span>
+        <span class="ft-name">Fase 1 · Kick-off, empalme y construcción del marco operativo</span>
+      </button>
+      <button class="fase-toggle-btn" data-fase="2">
+        <span class="ft-num mono">02</span>
+        <span class="ft-name">Fase 2 · Operación financiera recurrente</span>
+      </button>
+    </div>
+
+    <!-- FASE 1 -->
+    <div class="fase-content active" id="fase-1">
+
+      <div class="fase-header">
+        <div class="fh-left">
+          <div class="fh-num">01<span>.</span></div>
+          <div class="fh-duration">~ 1 mes</div>
+        </div>
+        <div class="fh-meta">
+          <div class="fh-eyebrow mono">FASE 1 · KICK-OFF Y EMPALME</div>
+          <h3 class="fh-title">Entendimiento, transición y construcción del marco operativo financiero.</h3>
+          <div class="fh-tags">
+            <span class="fh-tag"><strong>Inicio</strong> Inmediato</span>
+            <span class="fh-tag"><strong>Foco</strong> Estabilización inicial</span>
+            <span class="fh-tag"><strong>Modelo</strong> Construcción conjunta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks-sequence">
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">01<span>.</span></div>
+            <div class="seq-tag">ENTENDIMIENTO</div>
+          </div>
+          <div class="seq-body">
+            <h4>Comprender la operación antes de definir la estructura.</h4>
+            <p>Durante las primeras semanas entendemos a profundidad la operación, dinámicas, procesos y flujo de información de la empresa.</p>
+            <p>Esto nos permite diseñar una estructura financiera y operativa alineada con la realidad del negocio y no únicamente desde una perspectiva contable.</p>
+          </div>
+        </div>
+
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">02<span>.</span></div>
+            <div class="seq-tag">OPERACIÓN Y TRANSICIÓN</div>
+          </div>
+          <div class="seq-body">
+            <h4>Asumir el control operativo de forma gradual y ordenada.</h4>
+            <p>De manera gradual empezamos a asumir el control operativo del área, inicialmente apoyados por el equipo actual y particularmente por el auxiliar contable existente.</p>
+            <p>El objetivo de esta etapa es facilitar la transición operativa, resolver dudas de contexto, transferir conocimiento histórico y asegurar continuidad durante el proceso de empalme.</p>
+          </div>
+        </div>
+
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">03<span>.</span></div>
+            <div class="seq-tag">INFORMACIÓN Y REGULARIZACIÓN INICIAL</div>
+          </div>
+          <div class="seq-body">
+            <h4>Revisión estructural sobre los saldos e información recibida.</h4>
+            <p>A partir de los saldos e información entregada a B Management, realizamos un proceso de revisión estructural y conciliaciones con el fin de entender el estado real de la información financiera. Durante esta etapa identificamos:</p>
+            <div class="seq-pills">
+              <span class="seq-pill">Partidas sin soporte suficiente</span>
+              <span class="seq-pill">Inconsistencias</span>
+              <span class="seq-pill">Necesidades de reclasificación</span>
+              <span class="seq-pill">Ajustes operativos</span>
+              <span class="seq-pill">Oportunidades de organización documental</span>
+            </div>
+            <div class="seq-callout">
+              Los ajustes y regularizaciones realizados aplican únicamente <strong>hacia adelante</strong>, a partir del momento en que B Management asume la operación. El alcance no contempla reconstrucciones históricas integrales ni reapertura de cierres anteriores.
+            </div>
+          </div>
+        </div>
+
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">04<span>.</span></div>
+            <div class="seq-tag">ESTRUCTURA Y MARCO OPERATIVO</div>
+          </div>
+          <div class="seq-body">
+            <h4>Definir el modelo bajo el cual operará la función financiera hacia adelante.</h4>
+            <p>Con base en los hallazgos y conversaciones sostenidas con la empresa, definimos la estructura operativa y contable bajo la cual funcionará la operación hacia adelante. Esto incluye:</p>
+            <div class="seq-pills">
+              <span class="seq-pill">Estructura de cuentas</span>
+              <span class="seq-pill">Centros de costo</span>
+              <span class="seq-pill">Criterios de clasificación</span>
+              <span class="seq-pill">Frecuencia de información y reportes</span>
+              <span class="seq-pill">Flujo documental</span>
+              <span class="seq-pill">Manejo de archivo digital</span>
+              <span class="seq-pill">Lineamientos generales de operación</span>
+            </div>
+            <div class="seq-callout">
+              Algunos esquemas de clasificación y segmentación dependen de información operativa generada internamente por la empresa. B Management podrá estructurar y procesar dicha información siempre que el cliente suministre oportunamente los insumos requeridos.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fase-deliverables">
+        <div class="fd-header mono">ENTREGABLES · FASE 1</div>
+        <ul class="fd-list">
+          <li>
+            <h5>Documento de estructura y marco operativo financiero</h5>
+            <span class="fd-sub">Estructura de cuentas, criterios contables, estructura de reportes y lineamientos operativos.</span>
+          </li>
+          <li>
+            <h5>Reporte de hallazgos y recomendaciones iniciales</h5>
+            <span class="fd-sub">Inconsistencias, faltantes, riesgos, necesidades documentales y recomendaciones.</span>
+          </li>
+          <li>
+            <h5>Reporte de ajustes y reclasificaciones realizadas</h5>
+          </li>
+          <li>
+            <h5>Organización de archivo digital contable</h5>
+          </li>
+        </ul>
+      </div>
+
+      <div class="fase-notes">
+        <div class="fn-tag mono">NOTAS</div>
+        <div class="fn-body">
+          <p>Los reportes incluidos dentro del alcance corresponden a información financiera y contable operativa.</p>
+          <p>No incluye servicios formales de planeación financiera, modelación o análisis estratégico avanzado.</p>
+          <p>Debido a que esta etapa corresponde a un proceso de estabilización y construcción conjunta del modelo operativo, existe mayor flexibilidad inicial en tiempos, dinámicas y definición final de ciertos entregables.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="fase-content" id="fase-2">
+
+      <div class="fase-header">
+        <div class="fh-left">
+          <div class="fh-num">02<span>.</span></div>
+          <div class="fh-duration">Recurrente</div>
+        </div>
+        <div class="fh-meta">
+          <div class="fh-eyebrow mono">FASE 2 · OPERACIÓN RECURRENTE</div>
+          <h3 class="fh-title">Ejecución estable de cierres, control y reporting financiero mensual.</h3>
+          <div class="fh-tags">
+            <span class="fh-tag"><strong>Inicio</strong> Mes 2</span>
+            <span class="fh-tag"><strong>Foco</strong> Consistencia y control</span>
+            <span class="fh-tag"><strong>Modelo</strong> Operación continua</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fase-intro">
+        <p>Una vez definido el marco operativo, B Management asume la ejecución recurrente de la operación del área.</p>
+        <p>El objetivo de esta etapa es generar una dinámica estable de cierre, control y seguimiento financiero que permita operar con mayor claridad, consistencia y capacidad de gestión, generando información confiable, comparable y útil para la toma de decisiones operativas.</p>
+      </div>
+
+      <div class="blocks-sequence">
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">01<span>.</span></div>
+            <div class="seq-tag">OPERACIÓN RECURRENTE</div>
+          </div>
+          <div class="seq-body">
+            <h4>Ejecución contable continua bajo el marco definido en Fase 1.</h4>
+            <p>Incluye la ejecución contable recurrente de la empresa bajo el marco definido en Fase 1, asegurando continuidad operativa y consistencia en la información financiera.</p>
+          </div>
+        </div>
+
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">02<span>.</span></div>
+            <div class="seq-tag">CIERRE Y REPORTING</div>
+          </div>
+          <div class="seq-body">
+            <h4>Dinámica formal de cierre mensual y entrega de reportes financieros.</h4>
+            <p>Implementamos una dinámica formal de cierre mensual y generación de reportes financieros orientados a dar visibilidad clara sobre la situación de la empresa y su evolución operativa.</p>
+            <div class="seq-callout primary">
+              Los cierres oficiales serán entregados dentro de los primeros <strong>10 a 15 días</strong> posteriores al cierre de cada mes.
+            </div>
+          </div>
+        </div>
+
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">03<span>.</span></div>
+            <div class="seq-tag">TRIBUTARIO</div>
+          </div>
+          <div class="seq-body">
+            <h4>Cobertura de obligaciones tributarias dentro del alcance operativo.</h4>
+            <p>Incluye el cubrimiento de obligaciones tributarias nacionales y municipales correspondientes al alcance operativo definido con la empresa.</p>
+          </div>
+        </div>
+
+        <div class="seq-block">
+          <div class="seq-marker">
+            <div class="seq-num">04<span>.</span></div>
+            <div class="seq-tag">MEJORA CONTINUA</div>
+          </div>
+          <div class="seq-body">
+            <h4>Evolución natural del modelo operativo hacia adelante.</h4>
+            <p>Como parte natural de la operación recurrente, se identifican continuamente oportunidades de mejora en procesos, estructura documental, controles y dinámica operativa.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fase-deliverables grouped">
+        <div class="fd-header mono">ENTREGABLES · FASE 2</div>
+        <div class="fd-groups">
+          <div class="fd-group">
+            <h4 class="mono">Operativos</h4>
+            <ul>
+              <li>Calendario mensual de cierres y obligaciones</li>
+              <li>Checklist de cierre mensual</li>
+              <li>Soporte documental centralizado</li>
+              <li>Conciliaciones mensuales y archivos de cierre</li>
+              <li>Carpeta mensual de cierre</li>
+              <li>Sesión mensual de entrega de resultados y resolución de dudas posterior al cierre</li>
+            </ul>
+          </div>
+          <div class="fd-group">
+            <h4 class="mono">Información financiera</h4>
+            <ul>
+              <li>Información contable de acuerdo con la frecuencia definida en Fase 1</li>
+              <li>Estados financieros (balance, resultados y flujo de caja)</li>
+              <li>Reporte financiero comentado y análisis básico de variaciones</li>
+              <li>Dashboard preliminar con actualización periódica</li>
+              <li>Reportes de cuentas por cobrar y cuentas por pagar según necesidades definidas</li>
+            </ul>
+          </div>
+          <div class="fd-group">
+            <h4 class="mono">Tributario</h4>
+            <ul>
+              <li>Entregables tributarios</li>
+              <li>Certificaciones y soportes tributarios</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ CÓMO OPERAMOS ============ -->
+<section class="operations">
+  <div class="container">
+    <div class="section-eyebrow mono">04</div>
+    <h2 class="section-title">Un modelo diseñado para <em>ejecutar, supervisar y evolucionar</em> la operación financiera.</h2>
+
+    <div class="ops-intro">
+      <p>Además de la ejecución operativa, el servicio incorpora una capa de supervisión gerencial orientada a validación, criterio financiero y calidad de la información.</p>
+      <p>La combinación de experiencia Big 4 y enfoque de gestión financiera permite que la operación no solo funcione, sino que evolucione hacia una estructura más sólida, organizada y útil para la toma de decisiones.</p>
+    </div>
+
+    <div class="ops-modules">
+
+      <!-- 01 · EQUIPO Y COMUNICACIÓN INTEGRADOS -->
+      <div class="ops-module">
+        <div class="ops-module-head">
+          <div class="ops-module-num mono">01</div>
+          <h3>Estructura del equipo y canales de comunicación</h3>
+        </div>
+        <p class="ops-module-intro">El servicio opera con tres capas de responsabilidad. Las capas 02 y 03 funcionan también como contraparte directa de comunicación con el cliente según el tipo de tema.</p>
+
+        <div class="team-comm-v3">
+          <div class="tcm-row">
+            <div class="tcm-left">
+              <div class="tcm-num mono">01</div>
+              <div class="tcm-tag mono">EJECUCIÓN</div>
+            </div>
+            <div class="tcm-mid">
+              <div class="tcm-name">Auxiliar contable</div>
+              <div class="tcm-desc">Procesamiento contable, soportes, conciliaciones, manejo documental y ejecución operativa del día a día.</div>
+            </div>
+          </div>
+          <div class="tcm-row contact">
+            <div class="tcm-left">
+              <div class="tcm-num mono">02</div>
+              <div class="tcm-tag mono">GESTIÓN</div>
+            </div>
+            <div class="tcm-mid">
+              <div class="tcm-name">Contador líder</div>
+              <div class="tcm-desc">Supervisión técnica, validación contable, cumplimiento tributario y calidad de la información.</div>
+            </div>
+            <div class="tcm-comm">
+              <div class="tcm-comm-tag mono">CONTACTO · OPERATIVO</div>
+              <div class="tcm-comm-desc">Procesos contables, soportes, facturación, conciliaciones, cierres mensuales y reportes recurrentes.</div>
+            </div>
+          </div>
+          <div class="tcm-row contact lead">
+            <div class="tcm-left">
+              <div class="tcm-num mono">03</div>
+              <div class="tcm-tag mono">DIRECCIÓN</div>
+            </div>
+            <div class="tcm-mid">
+              <div class="tcm-name">Responsable de cuenta</div>
+              <div class="tcm-desc">Dirección del servicio, criterio financiero, supervisión y evolución del modelo operativo.</div>
+            </div>
+            <div class="tcm-comm">
+              <div class="tcm-comm-tag mono">CONTACTO · ESTRATÉGICO</div>
+              <div class="tcm-comm-desc">Estructura general, planeación, ajustes del marco operativo y decisiones estratégicas sobre el servicio.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 · DINÁMICA DE TRABAJO -->
+      <div class="ops-module">
+        <div class="ops-module-head">
+          <div class="ops-module-num mono">02</div>
+          <h3>Dinámica de trabajo</h3>
+        </div>
+        <p class="ops-module-intro">El servicio opera bajo una <strong>programación definida</strong>, con actividades recurrentes asignadas a fechas y frecuencias preacordadas.</p>
+        <p class="ops-module-intro">El modelo operativo promueve una dinámica de trabajo <strong>ordenada, eficiente y sostenible</strong>, evitando una operación completamente reactiva.</p>
+        <p class="ops-module-intro">El equipo mantiene <strong>disponibilidad continua</strong> para situaciones prioritarias. Sin embargo, siempre que sea posible, la operación se ejecutará bajo la estructura y programación previamente definidas.</p>
+      </div>
+
+      <!-- 03 · COMPROMISOS DEL CLIENTE -->
+      <div class="ops-module">
+        <div class="ops-module-head">
+          <div class="ops-module-num mono">03</div>
+          <h3>Compromisos del cliente</h3>
+        </div>
+        <p class="ops-module-intro">El correcto funcionamiento del modelo depende de dos compromisos clave por parte del cliente:</p>
+        <div class="commit-points">
+          <div class="commit-point">
+            <div class="cp-num mono">01</div>
+            <p><strong>Suministro oportuno de información:</strong> garantizar la entrega oportuna de información operativa, soporte documental y demás insumos requeridos para el proceso contable y financiero, asegurando cierres a tiempo y una correcta clasificación financiera.</p>
+          </div>
+          <div class="commit-point">
+            <div class="cp-num mono">02</div>
+            <p><strong>Punto de contacto único para gestión general:</strong> asignar una persona responsable de la gestión general con B Management, que actuará como contraparte principal y mantendrá comunicación constante con el equipo de servicio.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVERSIÓN ============ -->
+<section class="inversion">
+  <div class="container">
+    <div class="section-eyebrow mono">05</div>
+    <h2 class="section-title">Inversión mensual.</h2>
+    <p class="section-intro">
+      La inversión contempla tanto la etapa inicial de estabilización y construcción del marco operativo, como la operación recurrente posterior bajo el modelo definido.
+    </p>
+
+    <div class="price-card">
+      <div class="price-top">
+        <div class="price-main">
+          <div class="label mono">TARIFA MENSUAL FIJA</div>
+          <div class="price-amount">
+            <span class="currency">COP</span>4.350.000<span class="unit">/mes</span>
+          </div>
+          <div class="price-tax mono">+ IVA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRÓXIMOS PASOS ============ -->
+<section class="pasos">
+  <div class="container">
+    <div class="section-eyebrow mono">06</div>
+    <h2 class="section-title">Próximos pasos.</h2>
+
+    <div class="pasos-flow">
+      <div class="paso">
+        <div class="num mono">01</div>
+        <h4>Aprobación y contrato</h4>
+        <p>Confirmación de alcance, firma contractual y definición de responsables principales de ambas partes.</p>
+        <div class="arrow">→</div>
+      </div>
+      <div class="paso">
+        <div class="num mono">02</div>
+        <h4>Kick-off</h4>
+        <p>Inicio formal del proyecto, sesiones de entendimiento, acceso a sistemas, recepción de información y alineación operativa inicial. Durante esta etapa se ajusta y valida el plan de trabajo definitivo.</p>
+        <div class="arrow">→</div>
+      </div>
+      <div class="paso">
+        <div class="num mono">03</div>
+        <h4>Despliegue del plan</h4>
+        <p>Inicio formal del proceso de empalme, estabilización operativa y construcción del nuevo marco de trabajo financiero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="brand">B Management Services <span>SAS</span></div>
+  <div class="tagline mono">DELEGAR · PARA · CRECER</div>
+  <div class="disclaimer">
+    Esta propuesta es de carácter confidencial y ha sido preparada exclusivamente para PRI SAS. Los términos y condiciones definitivos serán formalizados en el contrato.<br>
+    B Management Services SAS · Bogotá, Colombia · 2026
+  </div>
+</footer>
+
+<script>
+  // Fase toggle (and any legacy tab buttons)
+  document.querySelectorAll('.fase-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var fase = btn.getAttribute('data-fase');
+      document.querySelectorAll('.fase-toggle-btn').forEach(function(b) {
+        b.classList.toggle('active', b === btn);
+      });
+      document.querySelectorAll('.fase-content').forEach(function(c) {
+        c.classList.toggle('active', c.id === 'fase-' + fase);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
