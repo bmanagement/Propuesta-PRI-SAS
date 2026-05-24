@@ -3322,12 +3322,42 @@ footer .disclaimer {
   color: rgba(255, 255, 255, 0.55);
 }
 
+/* Scroll hint visible only on mobile */
+.gantt-scroll-hint {
+  display: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--silver-blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-align: right;
+  font-weight: 600;
+}
+
 @media (max-width: 880px) {
-  .tl5 { padding: 18px 18px 16px; }
-  .tl5-months, .tl5-pinrow, .tl5-track { grid-template-columns: 100px 1fr; }
-  .tl5-month { font-size: 9px; letter-spacing: 0.12em; }
-  .tl5-pin .tl5-lbl { font-size: 9.5px; }
-  .tl5-label { font-size: 9px; letter-spacing: 0.1em; }
+  /* Make the gantt horizontally scrollable on small screens */
+  .tl5 {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 18px 18px;
+    /* visual edge fade to hint at scrollable content */
+    background:
+      linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.02) 100%);
+  }
+  /* Each row keeps its proportions; min-width forces the container to scroll */
+  .tl5-months { grid-template-columns: 96px repeat(6, 1fr); min-width: 560px; }
+  .tl5-pinrow { grid-template-columns: 96px 1fr; min-width: 560px; }
+  .tl5-track  { grid-template-columns: 96px 1fr; min-width: 560px; }
+
+  .tl5-month { font-size: 9.5px; letter-spacing: 0.08em; padding: 0 4px; }
+  .tl5-month .yr { font-size: 8px; }
+  .tl5-pin .tl5-date { font-size: 9px; letter-spacing: 0.08em; }
+  .tl5-pin .tl5-lbl { font-size: 10px; }
+  .tl5-label { font-size: 9.5px; letter-spacing: 0.06em; padding-right: 10px; }
+
+  /* Show the scroll hint on mobile */
+  .gantt-scroll-hint { display: block; }
 }
 
 </style>
@@ -3681,6 +3711,8 @@ footer .disclaimer {
     <p class="section-intro">
       La Etapa 1 se desarrolla durante un mes. La regularización de saldos, como parte de esta etapa, inicia una vez se recibe la información requerida y se ejecuta durante aproximadamente un mes a partir de dicha recepción. Por esta razón, esta actividad puede continuar en paralelo con la Etapa 2, cuyo inicio está previsto para el segundo mes.
     </p>
+
+    <div class="gantt-scroll-hint">← Desliza para ver la línea completa →</div>
 
     <div class="tl5">
 
