@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Propuesta · B Management — Junio 2026</title>
+<title>Propuesta · B Management Services — Junio 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -95,10 +95,9 @@ h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; color: var(--navy); letter-
 .hero {
   background: var(--navy-deep);
   color: var(--white);
-  padding: 140px 40px 96px;
+  padding: 110px 40px 72px;
   position: relative;
   overflow: hidden;
-  min-height: 90vh;
   display: flex; align-items: center;
 }
 .hero-bg {
@@ -129,7 +128,7 @@ h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; color: var(--navy); letter-
   font-size: 12px;
   color: var(--silver-light);
   letter-spacing: 0.15em;
-  margin-bottom: 48px;
+  margin-bottom: 28px;
   padding: 10px 18px;
   background: rgba(0,204,102,0.08);
   border: 1px solid rgba(0,204,102,0.3);
@@ -143,12 +142,12 @@ h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; color: var(--navy); letter-
   box-shadow: 0 0 8px var(--green-glow);
 }
 .hero h1 {
-  font-size: clamp(40px, 7vw, 92px);
+  font-size: clamp(30px, 4.6vw, 60px);
   font-weight: 700;
-  line-height: 0.98;
+  line-height: 1.02;
   color: var(--white);
-  margin-bottom: 32px;
-  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
   max-width: 1100px;
 }
 .hero h1 .accent {
@@ -162,18 +161,18 @@ h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; color: var(--navy); letter-
   display: inline;
 }
 .hero-sub {
-  font-size: 19px;
+  font-size: 17px;
   color: var(--silver-light);
   max-width: 720px;
   line-height: 1.55;
   font-weight: 300;
-  margin-bottom: 56px;
+  margin-bottom: 36px;
 }
 .hero-meta-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-  padding-top: 32px;
+  padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 .hero-meta-item .label {
@@ -1406,7 +1405,7 @@ section { padding: 88px 40px; }
 }
 .inversion .section-eyebrow { color: var(--green); }
 .inversion .section-eyebrow::before { background: var(--green); }
-.inversion .section-title { color: var(--white); }
+.inversion .section-title { color: var(--white); font-size: clamp(26px, 3.2vw, 40px); }
 .inversion .section-intro { color: var(--silver-light); }
 
 .price-card {
@@ -2542,6 +2541,14 @@ footer .disclaimer {
 .ops-module-intro + .ops-module-intro { margin-top: -16px; }
 .ops-module-intro strong { color: var(--navy); font-weight: 600; }
 
+/* Text-only module: let paragraphs use the full card width */
+.ops-module-flow .ops-module-intro {
+  max-width: none;
+  margin-bottom: 18px;
+}
+.ops-module-flow .ops-module-intro + .ops-module-intro { margin-top: 0; }
+.ops-module-flow .ops-module-intro:last-child { margin-bottom: 0; }
+
 /* TEAM (within module) */
 .team-layers-v2 {
   display: grid;
@@ -3368,7 +3375,7 @@ footer .disclaimer {
   <div class="nav-inner">
     <div class="nav-logo">
       <span class="dot"></span>
-      <svg class="nav-logo-svg" viewBox="110 449 775 101" xmlns="http://www.w3.org/2000/svg" aria-label="B Management">
+      <svg class="nav-logo-svg" viewBox="110 449 775 101" xmlns="http://www.w3.org/2000/svg" aria-label="B Management Services">
         <path d="M158.09,536.96h-15.22c-8.39,0-15.22-6.83-15.22-15.22,0-4.56,2.02-8.65,5.21-11.45,0,0,0,0-.01,0-4.6-.94-8.79-3-12.29-5.89-3.73,4.79-5.95,10.8-5.95,17.33,0,15.58,12.68,28.26,28.26,28.26h15.22v-13.04ZM158.09,450h-15.22c-8.9,0-16.84,4.13-22.03,10.58-3.9,4.84-6.23,11-6.23,17.68,0,8.73,3.98,16.55,10.23,21.74h0s0,0,0,0c4.9,4.07,11.18,6.52,18.04,6.52h43.48c8.39,0,15.22,6.83,15.22,15.22s-6.83,15.22-15.22,15.22h-15.22v13.04h15.22c15.58,0,28.26-12.68,28.26-28.26,0-8.73-3.98-16.55-10.22-21.74,0,0,0,0,0,0,0,0,0,0,0,0-4.89-4.07-11.18-6.52-18.03-6.52h0s-15.22,0-15.22,0h0s-13.04,0-13.04,0h-15.22c-8.39,0-15.22-6.83-15.22-15.22,0-3.09.92-5.96,2.51-8.36,2.72-4.13,7.41-6.86,12.71-6.86h15.22v-13.04ZM171.13,463.04h15.22c8.39,0,15.22,6.83,15.22,15.22,0,4.56-2.02,8.66-5.21,11.45,0,0,0,0,.01,0,4.6.94,8.79,3,12.29,5.89,3.73-4.79,5.95-10.8,5.95-17.33,0-15.58-12.68-28.26-28.26-28.26h-15.22v13.04Z" class="logo-dark"/>
         <rect x="158.09" y="506.52" width="13.04" height="43.48" class="logo-blue"/>
         <rect x="158.09" y="450" width="13.04" height="43.48" class="logo-blue"/>
@@ -3410,7 +3417,7 @@ footer .disclaimer {
       </div>
       <div class="hero-meta-item">
         <div class="label mono">Preparado por</div>
-        <div class="value">B Management SAS</div>
+        <div class="value">B Management Services SAS</div>
       </div>
       <div class="hero-meta-item">
         <div class="label mono">Modalidad</div>
@@ -3523,7 +3530,7 @@ footer .disclaimer {
           </div>
           <div class="seq-body">
             <h4>Revisión estructural sobre los saldos e información recibida.</h4>
-            <p>A partir de los saldos e información entregada a B Management, realizamos un proceso de revisión estructural y conciliaciones con el fin de entender el estado real de la información financiera. Durante esta etapa identificamos:</p>
+            <p>A partir de los saldos e información entregada a B Management Services, realizamos un proceso de revisión estructural y conciliaciones con el fin de entender el estado real de la información financiera. Durante esta etapa identificamos:</p>
             <div class="seq-pills">
               <span class="seq-pill">Partidas sin soporte suficiente</span>
               <span class="seq-pill">Inconsistencias</span>
@@ -3532,7 +3539,7 @@ footer .disclaimer {
               <span class="seq-pill">Oportunidades de organización documental</span>
             </div>
             <div class="seq-callout">
-              Los ajustes y regularizaciones realizados aplican únicamente <strong>hacia adelante</strong>, a partir del momento en que B Management asume la operación. El alcance no contempla reconstrucciones históricas integrales ni reapertura de cierres anteriores.
+              Los ajustes y regularizaciones realizados aplican únicamente <strong>hacia adelante</strong>, a partir del momento en que B Management Services asume la operación. El alcance no contempla reconstrucciones históricas integrales ni reapertura de cierres anteriores.
             </div>
           </div>
         </div>
@@ -3555,7 +3562,7 @@ footer .disclaimer {
               <span class="seq-pill">Lineamientos generales de operación</span>
             </div>
             <div class="seq-callout">
-              Algunos esquemas de clasificación y segmentación dependen de información operativa generada internamente por la empresa. B Management podrá estructurar y procesar dicha información siempre que el cliente suministre oportunamente los insumos requeridos.
+              Algunos esquemas de clasificación y segmentación dependen de información operativa generada internamente por la empresa. B Management Services podrá estructurar y procesar dicha información siempre que el cliente suministre oportunamente los insumos requeridos.
             </div>
           </div>
         </div>
@@ -3611,7 +3618,7 @@ footer .disclaimer {
       </div>
 
       <div class="fase-intro">
-        <p>Una vez definido el marco operativo, B Management asume la ejecución recurrente de la operación del área.</p>
+        <p>Una vez definido el marco operativo, B Management Services asume la ejecución recurrente de la operación del área.</p>
         <p>El objetivo de esta etapa es generar una dinámica estable de cierre, control y seguimiento financiero que permita operar con mayor claridad, consistencia y capacidad de gestión, generando información confiable, comparable y útil para la toma de decisiones operativas.</p>
       </div>
 
@@ -3851,7 +3858,7 @@ footer .disclaimer {
       </div>
 
       <!-- 02 · DINÁMICA DE TRABAJO -->
-      <div class="ops-module">
+      <div class="ops-module ops-module-flow">
         <div class="ops-module-head">
           <div class="ops-module-num mono">02</div>
           <h3>Dinámica de trabajo</h3>
@@ -3875,7 +3882,7 @@ footer .disclaimer {
           </div>
           <div class="commit-point">
             <div class="cp-num mono">02</div>
-            <p><strong>Punto de contacto único para gestión general:</strong> asignar una persona responsable de la gestión general con B Management, que actuará como contraparte principal y mantendrá comunicación constante con el equipo de servicio.</p>
+            <p><strong>Punto de contacto único para gestión general:</strong> asignar una persona responsable de la gestión general con B Management Services, que actuará como contraparte principal y mantendrá comunicación constante con el equipo de servicio.</p>
           </div>
         </div>
       </div>
@@ -3888,7 +3895,7 @@ footer .disclaimer {
 <section class="inversion">
   <div class="container">
     <div class="section-eyebrow mono">05</div>
-    <h2 class="section-title">Inversión mensual.</h2>
+    <h2 class="section-title">Fee mensual.</h2>
     <p class="section-intro">
       La inversión contempla tanto la etapa inicial de estabilización y construcción del marco operativo, como la operación recurrente posterior bajo el modelo definido.
     </p>
